@@ -67,7 +67,7 @@ mkdir clients
 
 #installs
 sudo apt update -y   
-sudo apt upgrade -y 
+#sudo apt upgrade -y -qq
 sudo apt install wireguard linux-headers-$(uname -r) -y  
 sudo apt install qrencode -y
 sudo apt install iptables-persistent -y
@@ -161,6 +161,8 @@ sudo chown -R unbound:unbound /var/lib/unbound
 
 
 echo "127.0.0.1 $(hostname)" | sudo tee -a /etc/hosts
+
+export DEBIAN_FRONTEND=noninteractive
 
 # services
 sudo systemctl enable wg-quick@wg0.service

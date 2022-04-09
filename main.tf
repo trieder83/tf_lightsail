@@ -46,7 +46,7 @@ resource "aws_lightsail_instance" "wg_vpn" {
   provisioner "remote-exec" {
       inline = [
       "chmod +x /tmp/setup_wg.sh",
-      join("/tmp/setup_wg.sh ", self.public_ip_address)
+      "/tmp/setup_wg.sh ${self.public_ip_address}"
     ]
     connection {
       type     = "ssh"
